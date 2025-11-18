@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbrella Innovations - Tech Company & Gaming Centre</title>
+    <style>
+        /* Reset only once */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #1f2937;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+    padding-top: 140px; /* Increased to match larger nav/logo height */
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure full width */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            /* Larger logo for desktop */
+            height: 80px;
+            width: auto;
+            /* Logo icon is now dark (black) */
+            stroke: #06090f; 
+            stroke-width: 2.5;
+            transition: stroke 0.3s;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .logo:hover .logo-icon {
+            /* Hover accent color */
+            stroke: #5b21b6; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            /* Nav links are dark */
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            /* Accent color */
+            background-color: #5b21b6; 
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover {
+            /* Accent color on hover */
+            color: #5b21b6; 
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Light, soft gradient background */
+            background: linear-gradient(135deg, #f7f9ff 0%, #e0e7ff 50%, #f7f9ff 100%); 
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            /* Subtle dark grid effect */
+            background: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            color: #1f2937;
+            text-shadow: 0 0 5px rgba(31, 41, 55, 0.1);
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            font-weight: 600;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            color: #5b21b6; /* Deep purple highlight */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            color: #4b5563; /* Medium dark text */
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            /* Bright accent gradient */
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            /* Keep the accent gradient for title contrast */
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 5px rgba(124, 58, 237, 0.1);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            /* Light card style */
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.1);
+            border-color: #a78bfa;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #5b21b6; /* Deep purple accent */
+        }
+
+        .service-card p {
+            line-height: 1.6;
+            opacity: 0.8;
+            color: #4b5563;
+        }
+
+        /* Gaming Section */
+        .gaming-section {
+            /* Light, subtle background for contrast */
+            background: #f0f4ff; 
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 4rem auto;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            /* White card inside light section */
+            background: #ffffff; 
+            border-radius: 15px;
+            transition: background 0.3s, transform 0.3s;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-item:hover {
+            background: #e0e7ff;
+            transform: translateY(-5px);
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            color: #7c3aed; /* Accent color */
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            /* White card style */
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5b21b6; /* Accent color */
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            /* Light input field */
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            color: #1f2937;
+            font-family: inherit;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7c3aed;
+            background: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            /* Bright accent gradient */
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+        }
+        
+        /* Custom Message Box for Alert Replacement */
+        #messageBox {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(-50px);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            /* Light footer */
+            background: #f4f4f9; 
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+        
+        /* Language specific styling for Arabic */
+        .arabic-name {
+            font-weight: normal;
+            font-size: 1.2rem; /* Slightly smaller than main English name */
+            margin-left: 0.5rem;
+            color: #4b5563;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .tagline {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .gaming-section {
+                padding: 2rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+            
+            .arabic-name {
+                display: none; /* Hide Arabic name on very small screens to save space */
+            }
+            /* Slightly smaller logo on small screens to preserve layout */
+            .logo-icon {
+                height: 56px;
+            }
+            /* Reduce top padding on smaller screens so content isn't pushed too far down */
+            body {
+                padding-top: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <!-- Logo image (PNG) - relative path from this file to ../umbrella innovation.png -->
+            <img src="../umbrella%20innovation.png" alt="Umbrella Innovations logo" class="logo-icon">
+            <span style="font-size: 1.8rem; font-weight: bold; color: #1f2937;">Umbrella Innovations</span>
+            <!--<span class="arabic-name">(مظلة للإبتكار)</span> -->
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gaming">Gaming</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Message Box for Alert replacement -->
+    <div id="messageBox">
+        Message Sent successfully! We'll be in touch.
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Umbrella Innovations مظلة للإبتكار </h1>
+            <p class="tagline">"If it's smart, fun, and can run by itself we build it."</p>
+            <p>Building the future of autonomous entertainment and intelligent experiences</p>
+            <a href="#contact" class="cta-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">What We Do</h2>
+        <div style="max-width: 900px; margin: 0 auto 3rem; text-align: center;">
+            <p style="font-size: 1.2rem; line-height: 1.8; opacity: 0.9; color: #4b5563;">
+                We design, build, and deploy intelligent, autonomous, and immersive systems that combine hardware, software, and real-world interaction. Starting as a one-person R&D lab, we turn ideas and prototypes into fully functional, smart experiences all developed and controlled in-house.
+            </p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Autonomous Systems</h3>
+                <p>Self-running, intelligent systems that operate with minimal human intervention, delivering maximum excitement.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Smart Experiences</h3>
+                <p>Immersive entertainment and technology experiences combining hardware and software innovation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏎️</div>
+                <h3>Interactive Racing</h3>
+                <p>Next-generation racing experiences with cutting-edge technology and autonomous capabilities.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Hardware & Software</h3>
+                <p>100% internally developed for complete control, rapid iteration, and unlimited customization.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h3>Gaming Environments</h3>
+                <p>State-of-the-art gaming centre with premium equipment and immersive interactive setups.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>R&D Innovation</h3>
+                <p>Pushing boundaries in smart, self-running systems and next-generation mobility solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gaming Centre Section -->
+    <section id="gaming">
+        <div class="gaming-section">
+            <h2 class="section-title">The Arena Experience</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; color: #4b5563;">
+                Experience cutting-edge entertainment in our state-of-the-art gaming arena located in Sharjah, UAE
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div style="font-size: 3rem;">🎮</div>
+                    <h4>Latest Gaming Tech</h4>
+                    <p>Premium consoles and cutting-edge equipment</p>
+                </div>
+                <div class="feature-item">
+                    <div style="font-size: 3rem;">🏎️</div>
+                    <h4>Racing Simulators</h4>
+                    <p>Advanced autonomous racing experiences</p>
+                </div>
+                <div class="feature-item">
+                    <div style="font-size: 3rem;">🤖</div>
+                    <h4>Smart Systems</h4>
+                    <p>Autonomous and interactive technology</p>
+                </div>
+                <div class="feature-item">
+                    <div style="font-size: 3rem;">🎪</div>
+                    <h4>Event Hosting</h4>
+                    <p>Perfect venue for events and collaborations</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 1rem; color: #4b5563;">
+                    Ready to host an event, explore collaboration, or experience the arena?
+                </p>
+                <a href="#contact" class="cta-btn" style="display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-size: 1rem; border: none; background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);">
+                    Contact Us Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="max-width: 800px; margin: 0 auto 3rem; text-align: center;">
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; color: #4b5563;">
+                Located in Sharjah, United Arab Emirates
+            </p>
+            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <div>
+                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">📞 Phone / WhatsApp</h4>
+                    <p style="font-size: 1.1rem;"><a href="tel:+971507767716" style="color: #1f2937; text-decoration: none;">+971 50 776 7716</a></p>
+                </div>
+                <div>
+                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">📍 Location</h4>
+                    <p style="font-size: 1.1rem;">Sharjah, UAE</p>
+                </div>
+            </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel" id="phone">
+            </div>
+            <div class="form-group">
+                <label for="service">Interested In</label>
+                <input type="text" id="service" placeholder="Arena Visit, Collaboration, Event Hosting, etc.">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Umbrella Innovations (مظلة للإبتكار). All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Founded and led by Ali Mohammed Alowais Alshamsi</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">Building the future of autonomous fun | Sharjah, UAE</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission (Replaced alert() with custom message box)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageBox = document.getElementById('messageBox');
+            messageBox.style.display = 'block';
+            
+            // Show the message box
+            setTimeout(() => {
+                messageBox.style.opacity = '1';
+                messageBox.style.transform = 'translateY(0)';
+            }, 10); // Small delay to trigger transition
+
+            // Hide the message box after 3 seconds
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+                messageBox.style.transform = 'translateY(-50px)';
+                
+                // Wait for transition to finish before hiding display
+                setTimeout(() => {
+                    messageBox.style.display = 'none';
+                }, 500); 
+            }, 3000);
+
+            // In a real application, you would send the form data here (e.g., using fetch API)
+
+            this.reset();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-item, .contact-form').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
